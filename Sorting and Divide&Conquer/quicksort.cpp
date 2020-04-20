@@ -42,8 +42,6 @@ void choosePivot(vector<int>::iterator& beg, vector<int>::iterator& end,
 //    else median = range / 2;
 //
 //    vector<int> sel_input = {*beg, *(beg + median - 1), *(end - 1)};
-////    for (size_t j = 0; j != sel_input.size(); ++j)
-////        cout << "sel_input: " << sel_input[j] << endl;
 //
 //    sort( sel_input.begin(), sel_input.end() );
 //    vector<int>::iterator sel_position = sel_input.begin() + 1;
@@ -63,7 +61,7 @@ void choosePivot(vector<int>::iterator& beg, vector<int>::iterator& end,
 void partitionAroundPivot(vector<int>::iterator& beg, vector<int>::iterator& end,
                                             vector<int>::iterator& pivot_position)
 {
-    // if not already there, swap pivot to the beginning of input array
+    // swap pivot to the beginning of input array
     if (beg != pivot_position) swap(*beg, *pivot_position);
 
     size_t i = 1;
@@ -75,11 +73,10 @@ void partitionAroundPivot(vector<int>::iterator& beg, vector<int>::iterator& end
     }
     swap( *beg, *(beg + i - 1) );   // set pivot sorted position
     pivot_position = beg + i - 1;   // reset pivot position so partition will be done correctly
-//    for (vector<int>::iterator jter = beg; jter != end; ++jter)
-//        cout << "input pivoted: " << *jter << endl;
 }
 
 
+// main sorting routine, outputs number of operations to gauge performance
 int quickSort(vector<int>::iterator& beg, vector<int>::iterator& end)
 {
     vector<int>::size_type size = end - beg;
@@ -93,15 +90,10 @@ int quickSort(vector<int>::iterator& beg, vector<int>::iterator& end)
 
     partitionAroundPivot(beg, end, pivot_position);
     count_comparisons += size - 1;
-//    cout << "comparisons: " << count_comparisons << endl;
 
     vector<int>::iterator after_pivot;
     pivot_position == end - 1 ? after_pivot = pivot_position : after_pivot = pivot_position + 1;
     if (size > 1) {
-//        for (vector<int>::iterator jter = beg; jter != after_pivot; ++jter)
-//            cout << "first half: " << *jter << endl;
-//        for (vector<int>::iterator jter = after_pivot; jter != end; ++jter)
-//            cout << "second half: " << *jter << endl;
     }
 
     quickSort(beg, after_pivot);
@@ -124,7 +116,6 @@ int main(int argc, char** argv)
     if (input) {
         while ( getline(input, string_element) ) {
             int element = stoi(string_element);
-//            cout << element << endl;
             data_array.push_back(element);
         }
     }
@@ -140,10 +131,6 @@ int main(int argc, char** argv)
     cout << "Sorted input array: " << endl;
     for (vector<int>::iterator iter = data_array.begin(); iter != data_array.end(); ++iter)
         input << *iter << endl;
-
-//    for(vector<int>::const_iterator iter = data_array.begin(); iter != data_array.end(); ++iter) {
-//        cout << *iter << endl;
-//    }
 
     cout << "Number of comparisons: " << comparisons << endl;
 
