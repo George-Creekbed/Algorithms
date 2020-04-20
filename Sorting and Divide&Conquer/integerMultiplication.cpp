@@ -1,6 +1,6 @@
 /* Integer multiplication algorithms:
    1) multiplication as taught in grade school
-   2) Karatsuba multiplication (recursive)    */
+   2) Karatsuba multiplication (recursive)     */
    
 
 #include <cstdint>  // allows the uintmax_t, an int type allowing larger values
