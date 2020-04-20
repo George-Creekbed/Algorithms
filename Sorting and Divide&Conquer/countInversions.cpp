@@ -1,14 +1,17 @@
+// sorts sequence of unsorted integers from input file
+// counts the inversions while sorting:
+// 3 2 1 4 --> 1 2 3 4, with 1 inversion
 #include <iostream>
 #include <fstream>
 #include <cstdint>  // allows the uintmax_t larger int type
-#include <limits>  // std::numeric_limits
+#include <limits>   // std::numeric_limits
 
 using namespace std;
 
 uintmax_t imin = numeric_limits<uintmax_t>::min(); // minimum value
 uintmax_t imax = numeric_limits<uintmax_t>::max();
 
-// derived from function mergeSort
+// mergeSort recursive function that also counts inversions while sorting
 uintmax_t sortCount(int* input, int input_size)
 {
     // split input array in two halves, smaller arrays 'a' and 'b'
@@ -38,20 +41,7 @@ uintmax_t sortCount(int* input, int input_size)
     if (size_a > 1) {inversions_a = sortCount(a, size_a);}
     if (size_b > 1) {inversions_b = sortCount(b, size_b);}
 
-//    cout << "size a: " << size_a << ", array a: ";    // debugging
-//    for (int i = 0; i != size_a; ++i)
-//    {
-//        cout << a[i] << " ";
-//    }
-//    cout << endl;
-//    cout << "size b: " << size_b << ", array b: ";
-//    for (int i = 0; i != size_b; ++i)
-//    {
-//        cout << b[i] << " ";
-//    }
-//    cout << endl;                                     // debugging
-
-    // main sort loop: sorted 'a' and 'b' are merged yielding the sorted 'input' array
+    // main sort loop: sorted 'a' and 'b' are merged, yielding the sorted 'input' array
     uintmax_t inversions = 0;
     int i = 0, j = 0;
     for (int k = 0; k != input_size; ++k)
@@ -63,7 +53,7 @@ uintmax_t sortCount(int* input, int input_size)
             input[k] = b[j];
             j++;
             if (i < size_a) {
-                inversions += size_a - i;   // -1 accounts for size_a being = last element in a + 1
+                inversions += size_a - i;   // -1 accounts for 'size_a' being = last element in (a + 1)
             }
         }
     }
@@ -81,21 +71,22 @@ int main()
 {
     cout << "Input array of integers: " << endl;
 
-    ifstream input_file("centomila.txt");
+    ifstream input_file("input_countInversions.txt");
     const int SIZE = 100000;
     int input[SIZE];
     char input_char[8];
     string input_str = "";
-    //int input[] = {6, 11, 7, 4, 3, 1, 9, 0, -1, 5, 8, 10, 12, 2, 13, 98, -2};//{5, 8, 6, 4, 3, 2, 7, 1, 0, 4, 6, 7, 8, 2, 12, 98, -2};
+    
+    // uncomment if you are not inclined to input from command prompt
+    //int input[] = {6, 11, 7, 4, 3, 1, 9, 0, -1, 5, 8, 10, 12, 2, 13, 98, -2};
     //int input_size = sizeof(input)/sizeof(input[0]);
     //for (int i = 0; i != input_size; ++i)
+    
     for (int i = 0; i != SIZE; ++i)
     {
         input_file.getline(input_char, 8, '\n');
         input_str = input_char;
-        //cout << input_str << endl;
         input[i] = stoi(input_str);
-        //cout << input[i] << " ";
     }
     input_file.close();
     int input_size = sizeof(input)/sizeof(input[0]);
