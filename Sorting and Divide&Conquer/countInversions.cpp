@@ -71,7 +71,7 @@ int main()
 {
     cout << "Input array of integers: " << endl;
 
-    ifstream input_file("input_countInversions.txt");
+    ifstream input_file("countInversions_input.txt");
     const int SIZE = 100000;
     int input[SIZE];
     char input_char[8];
