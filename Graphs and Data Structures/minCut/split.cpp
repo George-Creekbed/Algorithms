@@ -6,8 +6,6 @@ and stores these words ina vector */
 #include <vector>
 #include <string>
 
-//#include "Vec.h"
-//#include "Str.h"
 #include "split.h"
 
 using std::vector;          using std::string;
@@ -35,7 +33,6 @@ vector<string> split(const string& s)
         if (i != j)
         {
             //copy from s starting at i and taking j-i chars
-            //ret.push_back(s.substring(i, j-i));
             string word;
             for (string_size index = i; index != j; ++index)
             {
