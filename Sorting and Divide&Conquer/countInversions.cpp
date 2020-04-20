@@ -1,5 +1,5 @@
 // sorts sequence of unsorted integers from input file
-// counts the inversions while sorting:
+// counts the inversions while sorting, e.g:
 // 3 2 1 4 --> 1 2 3 4, with 1 inversion
 #include <iostream>
 #include <fstream>
