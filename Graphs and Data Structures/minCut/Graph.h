@@ -11,9 +11,12 @@ class Edge
 {
 public:
     Edge() {}
-    Edge(int node_1, int node_2) {node1 = node_1; node2 = node_2;}
+    Edge(int node_1, int node_2) {
+        node1 = node_1; 
+        node2 = node_2;
+    }
 
-    std::vector<int> getNodes() const;   // returns pointer to 2d array // remember to 'delete' dynamically allocated array
+    std::vector<int> getNodes() const;
     void setNodes(const int, const int);
 
     int& operator[](const int index)
