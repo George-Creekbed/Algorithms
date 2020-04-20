@@ -1,3 +1,4 @@
+// sorts array of unsorted integers by recursion
 #include <iostream>
 
 using namespace std;
@@ -5,7 +6,7 @@ using namespace std;
 void mergeSort(int* input, int input_size)
 {
     // split input array in two halves, smaller arrays 'a' and 'b'
-    // not made into a function because would have to pass back pointers on return
+    // not made into a function because would have had to pass back pointers on return
     int* a;
     int* b;
     int size_a = input_size / 2;
@@ -30,20 +31,7 @@ void mergeSort(int* input, int input_size)
     if (size_a > 1) {mergeSort(a, size_a);}
     if (size_b > 1) {mergeSort(b, size_b);}
 
-//    cout << "size a: " << size_a << ", array a: ";    // debugging
-//    for (int i = 0; i != size_a; ++i)
-//    {
-//        cout << a[i] << " ";
-//    }
-//    cout << endl;
-//    cout << "size b: " << size_b << ", array b: ";
-//    for (int i = 0; i != size_b; ++i)
-//    {
-//        cout << b[i] << " ";
-//    }
-//    cout << endl;                                     // debugging
-
-    // main sort loop: sorted 'a' and 'b' are merged yielding the sorted 'input' array
+    // main sort loop: sorted 'a' and 'b' are merged, yielding the sorted 'input' array
     int i = 0, j = 0;
     for (int k = 0; k != input_size; ++k)
     {
@@ -69,17 +57,15 @@ int main()
     int input[] = {5, 8, 6, 4, 3, 2, 7, 1, 0, 4, 6, 7, 8, 2, 12, 98, -2};
     int input_size = sizeof(input)/sizeof(input[0]);
     for (int i = 0; i != input_size; ++i)
-    {
         cout << input[i] << " ";
-    }
+    
     cout << " input_size: " << input_size << endl;
 
     mergeSort(input, input_size);
+    
     cout << "Sorted array: ";
     for (int i = 0; i != input_size; ++i)
-    {
         cout << input[i] << " ";
-    }
     cout << endl;
 
     return 0;
