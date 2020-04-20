@@ -1,3 +1,6 @@
+// algorithm selects the required n-th statistic
+// out an array of integers (the n-th element of the sorted array)
+// with the help of randomised procedures
 #include <iostream>
 #include <vector>
 #include <string>
@@ -22,7 +25,6 @@ void choosePivot(vector<int>::iterator& beg, vector<int>::iterator& end,
 
     int random_number = rand() % (range - 1);
     pivot_position = beg + random_number;
-//    cout << "random pivot position = " << random_number << " and " << *pivot_position << endl;
 }
 
 
@@ -65,12 +67,6 @@ int rSelect(vector<int>::iterator& beg, vector<int>::iterator& end, const int ta
         target_minus_pivot += target_position - 1;
     else
         target_minus_pivot = 0;
-//    cout << "target_minus_pivot = " << target_minus_pivot << endl;
-//
-//    for (vector<int>::iterator jter = beg; jter != after_pivot; ++jter)
-//        cout << "first half: " << *jter << endl;
-//    for (vector<int>::iterator jter = after_pivot; jter != end; ++jter)
-//        cout << "second half: " << *jter << endl;
 
     vector<int>::iterator after_pivot = pivot_position + 1;
 
@@ -82,7 +78,8 @@ int rSelect(vector<int>::iterator& beg, vector<int>::iterator& end, const int ta
 }
 
 
-int main(int argc, char** argv)
+// driver function extracts array median, but could be any other statistic
+int main(int argc, char** argv)   // accepts name of text file as argument (without suffix '.txt')
 {
     string tail(".txt");
     string filename(argv[1] + tail);
@@ -95,7 +92,6 @@ int main(int argc, char** argv)
     if (input) {
         while ( getline(input, string_element) ) {
             int element = stoi(string_element);
-//            cout << element << endl;
             data_array.push_back(element);
         }
     }
@@ -111,10 +107,8 @@ int main(int argc, char** argv)
         median_pos = data_array.size() / 2;
 
     int median = rSelect(beg, end, median_pos);
-
-    //input.open(filename, fstream::out | fstream::trunc);
+  
     cout << "Median of given array of integers is: " << median << " at position " << median_pos << endl;
-    //input.close();
 
     return 0;
 }
