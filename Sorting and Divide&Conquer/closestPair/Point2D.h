@@ -3,6 +3,7 @@
 
 #include <cmath>    // std::pow, std::sqrt
 
+// class defines a point on a plane
 class Point2D {
 public:
     // constructors
@@ -28,7 +29,7 @@ public:
 private:
     // data
     double _x, _y;
-    int _ordinal;   // label provided in case point is part of a set of points that needs sorting
+    int _ordinal;   // label provided in case the Point2D object is part of a set of Point2Ds that needs sorting
 };
 
 // computes Euclidean distance between two Point2Ds
