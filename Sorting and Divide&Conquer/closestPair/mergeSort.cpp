@@ -27,19 +27,6 @@ void mergeSort(T* input, int input_size, bool (*compare)(const T&, const T&) = s
     if (size_a > 1) {mergeSort(a, size_a, compare);}
     if (size_b > 1) {mergeSort(b, size_b, compare);}
 
-//    cout << "size a: " << size_a << ", array a: ";    // debugging
-//    for (int i = 0; i != size_a; ++i)
-//    {
-//        cout << a[i] << " ";
-//    }
-//    cout << endl;
-//    cout << "size b: " << size_b << ", array b: ";
-//    for (int i = 0; i != size_b; ++i)
-//    {
-//        cout << b[i] << " ";
-//    }
-//    cout << endl;                                     // debugging
-
     // main sort loop: sorted 'a' and 'b' are merged, yielding a sorted 'input' array
     int i = 0, j = 0;
     for (int k = 0; k != input_size; ++k)
@@ -58,26 +45,3 @@ void mergeSort(T* input, int input_size, bool (*compare)(const T&, const T&) = s
 
     return;
 }
-
-
-//int main()
-//{
-//    cout << "Input array of integers: " << endl;
-//    int input[] = {5, 8, 6, 4, 3, 2, 7, 1, 0, 4, 6, 7, 8, 2, 12, 98, -2};
-//    int input_size = sizeof(input)/sizeof(input[0]);
-//    for (int i = 0; i != input_size; ++i)
-//    {
-//        cout << input[i] << " ";
-//    }
-//    cout << " input_size: " << input_size << endl;
-//
-//    mergeSort(input, input_size);
-//    cout << "Sorted array: ";
-//    for (int i = 0; i != input_size; ++i)
-//    {
-//        cout << input[i] << " ";
-//    }
-//    cout << endl;
-//
-//    return 0;
-//}
