@@ -23,7 +23,7 @@ void mergeSort(int* input, int input_size)
         a[i] = input[i];
         b[i] = input[size_a + i];
     }
-    if (input_size % 2 != 0) {              // in case of odd input_size assign the loose element out to 'b'
+    if (input_size % 2 != 0) {            // in case of odd input_size assign the loose element out to 'b'
         b[size_b - 1] = input[input_size - 1];
     }
 
