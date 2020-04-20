@@ -4,9 +4,6 @@
 #include <vector>
 #include <string>
 
-//#include "Vec.h"
-//#include "Str.h"
-
 std::vector<std::string> split(const std::string&);
 
 #endif // SPLIT_H_INCLUDED
