@@ -29,9 +29,7 @@ void Edge::setNodes(const int in1, const int in2)
 void Node::addManyEdges(const vector<Edge> input)
 {
     for (size_t i = 0; i != input.size(); i++)
-    {
         edges.push_back(input[i]);
-    }
 }
 
 
@@ -50,9 +48,7 @@ Graph::Graph(const string& file_input)
         vector<int> splitted_line;
         // transform string input vector into a vector of integers
         for (size_t i = 0; i != splitted_line_str.size(); ++i)
-        {
             splitted_line.push_back(stoi(splitted_line_str[i]));
-        }
         // add current line data as a node in the graph
         Node current_node;
         current_node.setLabel(splitted_line[0]);
