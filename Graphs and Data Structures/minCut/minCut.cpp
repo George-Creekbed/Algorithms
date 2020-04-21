@@ -1,6 +1,6 @@
 // computes minimum number of free cuts in a graph
 // collapsed to 2 nodes through repeated, randomly
-// chosen  contractions of edges
+// chosen contractions of edges
 #include <iostream>
 #include <vector>
 #include <cstdlib>       // rand, srand
@@ -77,7 +77,7 @@ int minCut(Graph& input)
 }
 
 
-int main(int argc, char** argv)     // argv[1] is 'karger_input'
+int main(int argc, char** argv)     // argv[1] is 'minCut_input'
 {
     cout << "Reads graph input file..." << endl;
     Graph graph0(argv[1]);
@@ -88,7 +88,8 @@ int main(int argc, char** argv)     // argv[1] is 'karger_input'
     int current_mincut;
     int number_of_trials = 0;
     const int NUM_ITERATIONS_MAX = (int) graph0.size(); // pow(graph0.size(), 2); // should be size^2*log(size)
-    while (number_of_trials != NUM_ITERATIONS_MAX)
+    // repeat NUM_ITERATIONS_MAX times to maximise probability of correct minimal choice of minCut being selected
+    while (number_of_trials != NUM_ITERATIONS_MAX)      
     {
         Graph graph1(graph0);
         while (graph1.size() > 2)
